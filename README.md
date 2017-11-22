@@ -39,25 +39,6 @@ CREATE TABLE usuario(
 	senha varchar(50) NOT NULL
 )
 ```
+#### Como funciona a Rota(comportamento do codigo)
 
-#### Patterns State, pacote "zwmbie.PlayerState"
-
-- Esse pacote tem como responsabilidade controlar o estado que o Player se encontra, já que se trata de um jogo de zumbi ele pode esta infectado ou normal.
-
-#### Patterns Observer, pacote "zwmbie.PlayerObserver"
-
-- Esse pacote tem como responsabilidade a transição do Player nas trocas de estados, quando ele for mordido ou curado.
-
-
-#### Patterns Composite, pacote "zwmbie.ZumbisComposite"
-
-- Esse pacote tem como responsabilidade tratar a criação de um zumbi e uma horda de zumbis com a mesma facilidade.
-
-
-#### Patterns Builder, pacote "zwmbie.ZwmbieBuilder"
-
-- Esse pacote tem como responsabilidade a facilidade e integridade, tratando de regras de negocio, criação de novos zumbis.
-
-## Conclusão
-
-- Esse projeto é um exemplo academico de implementação de varios Patterns com o objetivo de demonstrar a interassão deles.
+- Por se tratar uma arquitetura MVC, o View é onde ocorre as entradas e saidas, que passam pelo Controller que faz a tranzação e as regras de negocios solicitadas e o Model que é o mapeamento do Banco de Dados do SQL Server.
