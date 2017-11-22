@@ -115,7 +115,7 @@ CREATE
 PROCEDURE [dbo].[SelectUmProduto]
 AS
 BEGIN
-declare @idProduto integer
+	declare @idProduto integer
 	SELECT * from produto where idProduto = @idProduto
 END
 ```
@@ -125,7 +125,7 @@ CREATE
 PROCEDURE [dbo].[SelectUmUsuario]
 AS
 BEGIN
-declare @idUsuario integer
+	declare @idUsuario integer
 	SELECT * from usuario where idUsuario = @idUsuario
 END
 ```
