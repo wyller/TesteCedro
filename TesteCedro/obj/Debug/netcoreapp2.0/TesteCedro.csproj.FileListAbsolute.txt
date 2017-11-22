@@ -1,0 +1,11 @@
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\bin\Debug\netcoreapp2.0\TesteCedro.deps.json
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\bin\Debug\netcoreapp2.0\TesteCedro.runtimeconfig.json
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\bin\Debug\netcoreapp2.0\TesteCedro.runtimeconfig.dev.json
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\bin\Debug\netcoreapp2.0\TesteCedro.dll
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\bin\Debug\netcoreapp2.0\TesteCedro.pdb
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.csproj.CoreCompileInputs.cache
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.AssemblyInfoInputs.cache
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.AssemblyInfo.cs
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.dll
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.pdb
+C:\Users\Wyller\Desktop\TesteCedro\TesteCedro\obj\Debug\netcoreapp2.0\TesteCedro.csprojResolveAssemblyReference.cache
