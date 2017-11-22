@@ -13,24 +13,27 @@ namespace TesteCedro.Controllers
         public IActionResult Index()
         {
             ProdutoLista produtos = new ProdutoLista();
-
             List<Produto> ListaProdutos = produtos.getProdutos().ToList();
-
             return View("Lista", ListaProdutos);
         }
 
-        public IActionResult About()
+        [HttpGet]
+        public IActionResult CriarProduto()
         {
-            ViewData["Message"] = "Your application description page.";
-
             return View();
         }
 
-        public IActionResult Contact()
+        [HttpPost]
+        public IActionResult CriarProduto(Produto produto)
         {
-            ViewData["Message"] = "Your contact page.";
+            ProdutoLista produtos = new ProdutoLista();
+            produtos.IncluirProduto(produto);
+            return RedirectToAction("Index");
+        }
 
-            return View();
+        public IActionResult Lista()
+        {
+            return View("Index");
         }
 
         public IActionResult Error()

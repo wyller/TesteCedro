@@ -8,5 +8,6 @@ namespace TesteCedro.Models
     interface IProduto
     {
         List<Produto> getProdutos();
+        void IncluirProduto(Produto produto);
     }
 }

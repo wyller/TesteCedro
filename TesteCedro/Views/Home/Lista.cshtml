@@ -6,60 +6,55 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Lista</title>
+
+    <link rel="stylesheet" type="text/css" href="~/css/site.css">
+
+    <style>
+        .cardProduto {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 49%;
+            height: 33%;
+            margin: 5px;
+            float: left;
+
+        }
+        .buttonProduto {
+            margin:5px;
+        }
+        .card:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+
+
 </head>
 <body>
 <h1>Lista de Produtos</h1>
 <hr/>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="CriarProduto">Criar produto</a>
 </p>
-<table class="table" border="1">
-    <thead>
-        <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.idProduto)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.nome)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.descricao)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.valor)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.foto)
-                </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.idProduto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.valor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.foto)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
-        </tr>
+    
+        <div class="cardProduto">
+ 
+            <img src=@Html.DisplayFor(modelItem => item.foto) 
+                 alt="Avatar" style=" width:100%; height:250px;">
+
+            <h4><b>@Html.DisplayFor(modelItem => item.nome)</b></h4>
+            <p>@Html.DisplayFor(modelItem => item.valor)</p>
+            <div class="buttonProduto">
+                <button>@Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ })</button>
+                <button>@Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ })</button>
+                <button>@Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ })</button>
+            </div>
+        </div>
 }
-    </tbody>
-</table>
 </body>
 </html>

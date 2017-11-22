@@ -44,5 +44,42 @@ namespace TesteCedro.Models
                 throw;
             }
         }
+
+        public void IncluirProduto(Produto produto)
+        {
+            var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
+            var conexaoString = configuration.GetConnectionString("DefautConnection");
+
+           using (SqlConnection con = new SqlConnection(conexaoString))
+           {
+
+                SqlCommand cmd = new SqlCommand("InserirProduto", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramNome = new SqlParameter();
+                paramNome.ParameterName = "@nome";
+                paramNome.Value = produto.nome;
+                cmd.Parameters.Add(paramNome);
+
+                SqlParameter paramDescricao = new SqlParameter();
+                paramDescricao.ParameterName = "@descricao";
+                paramDescricao.Value = produto.descricao;
+                cmd.Parameters.Add(paramDescricao);
+
+                SqlParameter paramValor = new SqlParameter();
+                paramValor.ParameterName = "@valor";
+                paramValor.Value = produto.valor;
+                cmd.Parameters.Add(paramValor);
+
+                SqlParameter paramFoto = new SqlParameter();
+                paramFoto.ParameterName = "@foto";
+                paramFoto.Value = produto.foto;
+                cmd.Parameters.Add(paramFoto);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+           }
+        }
     }
 }
+
