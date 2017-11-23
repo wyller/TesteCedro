@@ -22,7 +22,7 @@
         .buttonProduto {
             margin:5px;
         }
-        .card:hover {
+        .cardProduto:hover {
             box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
         }
 
@@ -50,7 +50,7 @@
             <h4><b>@Html.DisplayFor(modelItem => item.nome)</b></h4>
             <p>@Html.DisplayFor(modelItem => item.valor)</p>
             <div class="buttonProduto">
-                <button>@Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ })</button>
+                <button>@Html.ActionLink("Editar", "EditarProduto", new { id=item.idProduto })</button>
                 <button>@Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ })</button>
                 <button>@Html.ActionLink("Deletar", "Delete", new { /* id=item.PrimaryKey */ })</button>
             </div>

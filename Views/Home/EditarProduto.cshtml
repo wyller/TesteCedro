@@ -5,15 +5,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>CriarProduto</title>
+    <title>EditarProduto</title>
 </head>
 <body>
 
 <h4>Produto</h4>
-<hr/>
+<hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CriarProduto">
+        <form asp-action="EditarProduto">
             <div asp-validation-summary="All" class="text-danger"></div>
 
             <div class="form-group">
@@ -37,9 +37,8 @@
                 <span asp-validation-for="foto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
-
         </form>
     </div>
 </div>

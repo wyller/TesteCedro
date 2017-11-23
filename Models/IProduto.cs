@@ -9,5 +9,6 @@ namespace TesteCedro.Models
     {
         List<Produto> getProdutos();
         void IncluirProduto(Produto produto);
+        void AtualizarProduto(Produto produto);
     }
 }

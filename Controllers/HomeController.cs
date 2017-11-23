@@ -12,7 +12,7 @@ namespace TesteCedro.Controllers
     {
         public IActionResult Index()
         {
-            ProdutoLista produtos = new ProdutoLista();
+            ProdutoRotas produtos = new ProdutoRotas();
             List<Produto> ListaProdutos = produtos.getProdutos().ToList();
             return View("Lista", ListaProdutos);
         }
@@ -26,9 +26,46 @@ namespace TesteCedro.Controllers
         [HttpPost]
         public IActionResult CriarProduto(Produto produto)
         {
-            ProdutoLista produtos = new ProdutoLista();
-            produtos.IncluirProduto(produto);
-            return RedirectToAction("Index");
+            if (string.IsNullOrEmpty(produto.nome))
+                ModelState.AddModelError("nome", "Nome vazio");
+            if (string.IsNullOrEmpty(produto.descricao))
+                ModelState.AddModelError("descricao", "Descrição vazia");
+            if (string.IsNullOrEmpty(produto.foto))
+                ModelState.AddModelError("foto", "foto vazia");
+
+            if  (produto?.valor == 0 || produto?.valor == null)
+                ModelState.AddModelError("valor", "Valor vazio");
+
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            else
+            {
+                ProdutoRotas produtos = new ProdutoRotas();
+                produtos.IncluirProduto(produto);
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult EditarProduto(int id)
+        {
+            ProdutoRotas produtoRotas = new ProdutoRotas();
+            Produto produto = produtoRotas.getProdutos().Single(x => x.idProduto == id);
+            return View(produto);
+        }
+
+        [HttpPost]
+        public IActionResult EditarProduto(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {
+                ProdutoRotas produtoRotas = new ProdutoRotas();
+                produtoRotas.AtualizarProduto(produto);
+                return RedirectToAction("Index");
+            }
+            return View(produto);
         }
 
         public IActionResult Lista()

@@ -13125,11 +13125,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\TesteCedro\\TesteCedro.csproj",
+      "projectUniqueName": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\TesteCedro.csproj",
       "projectName": "TesteCedro",
-      "projectPath": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\TesteCedro\\TesteCedro.csproj",
+      "projectPath": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\TesteCedro.csproj",
       "packagesPath": "C:\\Users\\Wyller\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\TesteCedro\\obj\\",
+      "outputPath": "C:\\Users\\Wyller\\Desktop\\TesteCedro\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
