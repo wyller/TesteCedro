@@ -26,16 +26,6 @@ namespace TesteCedro.Controllers
         [HttpPost]
         public IActionResult CriarProduto(Produto produto)
         {
-            if (string.IsNullOrEmpty(produto.nome))
-                ModelState.AddModelError("nome", "Nome vazio");
-            if (string.IsNullOrEmpty(produto.descricao))
-                ModelState.AddModelError("descricao", "Descrição vazia");
-            if (string.IsNullOrEmpty(produto.foto))
-                ModelState.AddModelError("foto", "foto vazia");
-
-            if  (produto?.valor == 0 || produto?.valor == null)
-                ModelState.AddModelError("valor", "Valor vazio");
-
             if (!ModelState.IsValid)
             {
                 return View();
@@ -59,13 +49,14 @@ namespace TesteCedro.Controllers
         [HttpPost]
         public IActionResult EditarProduto(Produto produto)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                ProdutoRotas produtoRotas = new ProdutoRotas();
-                produtoRotas.AtualizarProduto(produto);
-                return RedirectToAction("Index");
+                return View(produto);
             }
-            return View(produto);
+
+            ProdutoRotas produtoRotas = new ProdutoRotas();
+            produtoRotas.AtualizarProduto(produto);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Lista()

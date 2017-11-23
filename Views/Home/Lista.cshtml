@@ -49,6 +49,7 @@
 
             <h4><b>@Html.DisplayFor(modelItem => item.nome)</b></h4>
             <p>@Html.DisplayFor(modelItem => item.valor)</p>
+            <p>@Html.DisplayFor(modelItem => item.idProduto)</p>
             <div class="buttonProduto">
                 <button>@Html.ActionLink("Editar", "EditarProduto", new { id=item.idProduto })</button>
                 <button>@Html.ActionLink("Detalhes", "Details", new { /* id=item.PrimaryKey */ })</button>

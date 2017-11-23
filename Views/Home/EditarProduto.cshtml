@@ -15,7 +15,10 @@
     <div class="col-md-4">
         <form asp-action="EditarProduto">
             <div asp-validation-summary="All" class="text-danger"></div>
-
+            <div class="form-group">
+                <input asp-for="idProduto" type="hidden" class="form-control"/>
+                <span asp-validation-for="idProduto" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="nome" class="control-label"></label>
                 <input asp-for="nome" class="form-control" />
