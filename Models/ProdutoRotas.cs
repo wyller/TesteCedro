@@ -99,8 +99,8 @@ namespace TesteCedro.Models
             var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
             var conexaoString = configuration.GetConnectionString("DefautConnection");
 
-           using (SqlConnection con = new SqlConnection(conexaoString))
-           {
+            using (SqlConnection con = new SqlConnection(conexaoString))
+            {
                 try
                 {
 
@@ -134,7 +134,35 @@ namespace TesteCedro.Models
                 {
                     throw;
                 }
-           }
+            }
+        }
+
+        public void DeletarProduto(int id)
+        {
+            var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
+            var conexaoString = configuration.GetConnectionString("DefautConnection");
+
+            using (SqlConnection con = new SqlConnection(conexaoString))
+            {
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("ExcluirProduto", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    SqlParameter paramIdProduto = new SqlParameter();
+                    paramIdProduto.ParameterName = "@idProduto";
+                    paramIdProduto.Value = id;
+                    cmd.Parameters.Add(paramIdProduto);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
+            }
         }
     }
 }

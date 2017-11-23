@@ -1,0 +1,54 @@
+﻿@model TesteCedro.Models.Produto
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExcluirProduto</title>
+    <style>
+        .cardProduto {
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            transition: 0.3s;
+            width: 49%;
+            height: 33%;
+            margin: 5px;
+            float: left;
+        }
+
+        .buttonProduto {
+            margin: 5px;
+        }
+
+        .cardProduto:hover {
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        }
+
+        .container {
+            padding: 2px 16px;
+        }
+    </style>
+</head>
+<body>
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        <h4>Produto</h4>
+        <hr />
+        <div class="cardProduto">
+
+            <img src=@Html.DisplayFor(model => model.foto)
+                 alt="Avatar" style=" width:100%; height:250px;">
+
+            <h4><b>@Html.DisplayFor(model => model.nome)</b></h4>
+            <p>@Html.DisplayFor(model => model.descricao)</p>
+            <p>@Html.DisplayFor(model => model.valor)</p>
+            <p>@Html.DisplayFor(model => model.idProduto)</p>
+            <div class="buttonProduto">
+                <form asp-action="ExcluirProduto">
+                    <input type="submit" value="Delete" class="btn btn-default" />
+                    <a asp-action="Index" class="btn btn-default">Não</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -59,6 +59,22 @@ namespace TesteCedro.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult ExcluirProduto(int id)
+        {
+            ProdutoRotas produtoRotas = new ProdutoRotas();
+            Produto produto = produtoRotas.getProdutos().Single(x => x.idProduto == id);
+            return View(produto);
+        }
+
+        [HttpPost]
+        public IActionResult ExcluirProduto(Produto produto)
+        {
+            ProdutoRotas produtoRotas = new ProdutoRotas();
+            produtoRotas.DeletarProduto(produto.idProduto);
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Lista()
         {
             return View("Index");
