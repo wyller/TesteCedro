@@ -9,8 +9,6 @@ namespace TesteCedro.Models
 {
     public class Produto
     {
-
-        [BindRequired]
         public int idProduto { get; set; }
 
         [Required(ErrorMessage = "O nome deve ser informado")]

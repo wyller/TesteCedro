@@ -1,10 +1,12 @@
 ﻿@model TesteCedro.Models.Produto
 
 <!DOCTYPE html>
+
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>ExcluirProduto</title>
+    <title>DetalharProduto</title>
+
     <style>
         .cardProduto {
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -27,9 +29,10 @@
             padding: 2px 16px;
         }
     </style>
+
 </head>
 <body>
-    <h3>Are you sure you want to delete this?</h3>
+
     <div>
         <h4>Produto</h4>
         <hr />
@@ -42,13 +45,12 @@
             <p>@Html.DisplayFor(model => model.descricao)</p>
             <p>@Html.DisplayFor(model => model.valor)</p>
             <div class="buttonProduto">
-                <form asp-action="ExcluirProduto">
+                <form asp-action="DetalharProduto">
                     <div class="form-group">
                         <input asp-for="idProduto" type="hidden" class="form-control" />
                         <span asp-validation-for="idProduto" class="text-danger"></span>
                     </div>
-                    <input type="submit" value="Delete" class="btn btn-default" />
-                    <a asp-action="Index" class="btn btn-default">Não</a>
+                    <a asp-action="Index" class="btn btn-default">Lista</a>
                 </form>
             </div>
         </div>

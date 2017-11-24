@@ -75,6 +75,14 @@ namespace TesteCedro.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public IActionResult DetalharProduto(int id)
+        {
+            ProdutoRotas produtoRotas = new ProdutoRotas();
+            Produto produto = produtoRotas.getProdutos().Single(x => x.idProduto == id);
+            return View(produto);
+        }
+
         public IActionResult Lista()
         {
             return View("Index");

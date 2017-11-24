@@ -11,5 +11,6 @@ namespace TesteCedro.Models
         void IncluirProduto(Produto produto);
         void AtualizarProduto(Produto produto);
         void DeletarProduto(int id);
+        void DetalharProduto(int id);
     }
 }

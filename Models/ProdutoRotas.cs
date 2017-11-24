@@ -144,6 +144,7 @@ namespace TesteCedro.Models
 
             using (SqlConnection con = new SqlConnection(conexaoString))
             {
+
                 try
                 {
 
@@ -162,6 +163,32 @@ namespace TesteCedro.Models
                 {
                     throw;
                 }
+            }
+        }
+
+        public void DetalharProduto(int id)
+        {
+            var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
+            var conexaoString = configuration.GetConnectionString("DefautConnection");
+
+            using (SqlConnection con = new SqlConnection(conexaoString))
+            try
+            {
+
+                SqlCommand cmd = new SqlCommand("SelectUmProduto", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter paramIdProduto = new SqlParameter();
+                paramIdProduto.ParameterName = "@idProduto";
+                paramIdProduto.Value = id;
+                cmd.Parameters.Add(paramIdProduto);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+            catch
+            {
+                throw;
             }
         }
     }

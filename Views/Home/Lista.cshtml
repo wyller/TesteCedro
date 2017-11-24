@@ -49,11 +49,11 @@
 
             <h4><b>@Html.DisplayFor(modelproduto => produto.nome)</b></h4>
             <p>@Html.DisplayFor(modelproduto => produto.valor)</p>
-            <p>@Html.DisplayFor(modelproduto => produto.idProduto)</p>
             <div class="buttonProduto">
-                <button>@Html.ActionLink("Editar", "EditarProduto", new { id=produto.idProduto })</button>
-                <button>@Html.ActionLink("Detalhes", "Details", new { /* id=produto.PrimaryKey */ })</button>
-                <button>@Html.ActionLink("Deletar", "ExcluirProduto", new { id=produto.idProduto})</button>
+                <button>@Html.ActionLink("Editar", "EditarProduto", new { id = produto.idProduto })</button>
+                <button>@Html.ActionLink("Detalhes", "DetalharProduto", new {  id = produto.idProduto })</button>
+                <button>@Html.ActionLink("Deletar", "ExcluirProduto", new { id = produto.idProduto })</button>
+                <button>@Html.ActionLink("Comprar", "ComprarProduto", new { id = produto.idProduto })</button>
             </div>
         </div>
 }
