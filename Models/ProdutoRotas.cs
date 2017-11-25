@@ -13,7 +13,7 @@ namespace TesteCedro.Models
     public class ProdutoRotas : IProduto
     {
 
-        public List<Produto> getProdutos()
+        public List<Produto> GetProdutos()
         {
             var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
             var conexaoString = configuration.GetConnectionString("DefautConnection");
@@ -190,6 +190,32 @@ namespace TesteCedro.Models
             {
                 throw;
             }
+        }
+
+        public void ComprarProduto(int id)
+        {
+            var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
+            var conexaoString = configuration.GetConnectionString("DefautConnection");
+
+            using (SqlConnection con = new SqlConnection(conexaoString))
+                try
+                {
+
+                    SqlCommand cmd = new SqlCommand("SelectUmProduto", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    SqlParameter paramIdProduto = new SqlParameter();
+                    paramIdProduto.ParameterName = "@idProduto";
+                    paramIdProduto.Value = id;
+                    cmd.Parameters.Add(paramIdProduto);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    throw;
+                }
         }
     }
 }
