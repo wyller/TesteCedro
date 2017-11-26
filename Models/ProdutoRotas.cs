@@ -5,6 +5,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
 using System.Threading.Tasks;
 using TesteCedro.Services;
 
@@ -12,6 +14,16 @@ namespace TesteCedro.Models
 {
     public class ProdutoRotas : IProduto
     {
+
+        public byte[] ObjectToByteArray(Object obj)
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            using (var ms = new MemoryStream())
+            {
+                bf.Serialize(ms, obj);
+                return ms.ToArray();
+            }
+        }
 
         public List<Produto> GetProdutos()
         {
@@ -35,6 +47,8 @@ namespace TesteCedro.Models
                         produto.descricao = rdr["descricao"].ToString();
                         produto.valor = Convert.ToInt32(rdr["valor"]);
                         produto.foto = rdr["foto"].ToString();
+                        produto.image = ObjectToByteArray(rdr["image"]);
+
                         produtos.Add(produto);
                     }
                 }
@@ -126,6 +140,11 @@ namespace TesteCedro.Models
                     paramFoto.ParameterName = "@foto";
                     paramFoto.Value = produto.foto;
                     cmd.Parameters.Add(paramFoto);
+
+                    SqlParameter paramimage = new SqlParameter();
+                    paramimage.ParameterName = "@image";
+                    paramimage.Value = produto.image;
+                    cmd.Parameters.Add(paramimage);
 
                     con.Open();
                     cmd.ExecuteNonQuery();

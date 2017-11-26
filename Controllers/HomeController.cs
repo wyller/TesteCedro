@@ -5,15 +5,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using TesteCedro.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace TesteCedro.Controllers
 {
     public class HomeController : Controller
     {
+
         public IActionResult Index()
         {
-            ProdutoRotas produtos = new ProdutoRotas();
-            List<Produto> ListaProdutos = produtos.GetProdutos().ToList();
+            ProdutoRotas produtosRotas = new ProdutoRotas();
+            List<Produto> ListaProdutos = produtosRotas.GetProdutos().ToList();
             return View("Lista", ListaProdutos);
         }
 
@@ -24,16 +27,29 @@ namespace TesteCedro.Controllers
         }
 
         [HttpPost]
-        public IActionResult CriarProduto(Produto produto)
+        public async Task<IActionResult> CriarProduto(Produto produto, List<IFormFile> image)
         {
+
             if (!ModelState.IsValid)
             {
                 return View();
             }
             else
             {
-                ProdutoRotas produtos = new ProdutoRotas();
-                produtos.IncluirProduto(produto);
+                foreach (var img in image)
+                {
+                    if (img.Length > 0)
+                    {
+                        using (var stream = new MemoryStream())
+                        {
+                            await img.CopyToAsync(stream);
+                            produto.image = stream.ToArray();
+                        }
+                    }
+                }
+                
+                ProdutoRotas produtosRotas = new ProdutoRotas();
+                produtosRotas.IncluirProduto(produto);
                 return RedirectToAction("Index");
             }
         }
@@ -90,7 +106,6 @@ namespace TesteCedro.Controllers
             Produto produto = produtoRotas.GetProdutos().Single(x => x.idProduto == id);
             return View(produto);
         }
-
 
         public IActionResult Lista()
         {

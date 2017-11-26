@@ -7,42 +7,29 @@
     <meta name="viewport" content="width=device-width" />
     <title>ComprarProduto</title>
     <link rel="stylesheet" type="text/css" href="~/css/site.min.css">
-    <script src="~/js/site.min.js" asp-append-version ="true"></script>
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
 
 </head>
 <body>
     <div>
         <h4>Produto</h4>
-        <hr />
-        <div class="cardProduto">
+        <div class="cardProduto" style="width:50%">
             <form method="POST">
-                <img src=@Html.DisplayFor(model => model.foto)
-                     alt="Avatar" style=" width:100%; height:250px;">
-
-                <h4><b>@Html.DisplayFor(model => model.nome)</b></h4>
-                <p>@Html.DisplayFor(model => model.descricao)</p>
-                <p>@Html.DisplayFor(model => model.valor)</p>
+                <img src=@Html.DisplayFor(model => model.foto) alt="Avatar" style="width: 350px;height: 250px;display: block; margin: auto;" />
+                <h4><b>Nome: @Html.DisplayFor(model => model.nome)</b></h4>
+                <p><b>Descrição:</b> @Html.DisplayFor(model => model.descricao)</p>
+                <p><b>Valor:</b> @Html.DisplayFor(model => model.valor)</p>
                 <input type="hidden" id="valorProduto" value="@Html.DisplayFor(model => model.valor)" disabled>
-                
+                <div class="buttonProduto">
+                    <input type="button" class="btn btn-default" onclick="comprarAvistaComDesconto(valorProduto)" value="Comprar no Dinheiro" />
+                    <input type="button" class="btn btn-default" onclick="comprarAvista(valorProduto)" value="Comprar no Cartão A Vista">
+                    <input type="button" class="btn btn-default" onclick="comprarAprazo(valorProduto)" value="Comprar no Cartão A prazo">
 
-                <div id="dynamicInput">
-                    <input type="radio" name="Pagamento" value="cartao"> Cartão <br />
-                    <input type="radio" name="Pagamento" value="dinheiro"> Dinheiro <br />
                 </div>
+                <div id="inputParcelas">
 
-                <input type="button" value="Add another text input"
-                       onClick="addInput('dynamicInput', 'Pagamento', 'valorProduto');">
-
+                </div>
             </form>
-            <div class="buttonProduto">
-                <form asp-action="ComprarProduto">
-                    <div class="form-group">
-                        <input asp-for="idProduto" type="hidden" class="form-control" />
-                        <span asp-validation-for="idProduto" class="text-danger"></span>
-                    </div>
-                    <a asp-action="Index" class="btn btn-default">Lista</a>
-                </form>
-            </div>
         </div>
     </div>
 </body>

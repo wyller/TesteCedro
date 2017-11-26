@@ -26,5 +26,7 @@ namespace TesteCedro.Models
         [Display(Name = "Informe a foto do produto")]
         public string foto { get; set; }
 
+        public byte[] image { get; set; }
+
     }
 }
