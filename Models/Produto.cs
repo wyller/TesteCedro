@@ -20,6 +20,7 @@ namespace TesteCedro.Models
         public string descricao { get; set; }
 
         [Required(ErrorMessage = "O valor deve ser informado")]
+        [Display(Name = "Informe o valor do produto")]
         public float valor { get; set; }
 
         [Required(ErrorMessage = "A foto deve ser informada")]

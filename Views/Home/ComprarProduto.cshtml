@@ -10,20 +10,23 @@
     <script src="~/js/site.min.js" asp-append-version="true"></script>
 
 </head>
+
 <body>
     <div>
-        <h4>Produto</h4>
+        <h1>Comprar Produto</h1>
+        <hr />
         <div class="cardProduto" style="width:50%">
             <form method="POST">
-                <img src=@Html.DisplayFor(model => model.foto) alt="Avatar" style="width: 350px;height: 250px;display: block; margin: auto;" />
-                <h4><b>Nome: @Html.DisplayFor(model => model.nome)</b></h4>
-                <p><b>Descrição:</b> @Html.DisplayFor(model => model.descricao)</p>
-                <p><b>Valor:</b> @Html.DisplayFor(model => model.valor)</p>
+                <img class="img-thumbnail" src=@Html.DisplayFor(modelproduto => modelproduto.foto)
+                     alt="Avatar" style=" width:400px; height:250px; display:block; margin:auto;">
+
+                <h4 style="margin:2px"> <b>Nome:</b> @Html.DisplayFor(modelproduto => modelproduto.nome)</h4>
+                <p style="margin:2px"> <b>Valor:</b> R$ @Html.DisplayFor(modelproduto => modelproduto.valor)</p>
                 <input type="hidden" id="valorProduto" value="@Html.DisplayFor(model => model.valor)" disabled>
                 <div class="buttonProduto">
-                    <input type="button" class="btn btn-default" onclick="comprarAvistaComDesconto(valorProduto)" value="Comprar no Dinheiro" />
-                    <input type="button" class="btn btn-default" onclick="comprarAvista(valorProduto)" value="Comprar no Cartão A Vista">
-                    <input type="button" class="btn btn-default" onclick="comprarAprazo(valorProduto)" value="Comprar no Cartão A prazo">
+                    <input type="button" class="btn btn-default" onclick="comprarAvistaComDesconto(valorProduto)" value="Comprar no Dinheiro" style="background-color:aliceblue; color:darkblue"/>
+                    <input type="button" class="btn btn-default" onclick="comprarAvista(valorProduto)" value="Comprar no Cartão A Vista" style="background-color:aliceblue; color:darkblue">
+                    <input type="button" class="btn btn-default" onclick="comprarAprazo(valorProduto)" value="Comprar no Cartão A prazo" style="background-color:aliceblue; color:darkblue">
 
                 </div>
                 <div id="inputParcelas">

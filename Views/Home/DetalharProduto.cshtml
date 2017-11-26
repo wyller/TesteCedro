@@ -13,23 +13,23 @@
 <body>
 
     <div>
-        <h4>Produto</h4>
+        <h1>Detalhar Produtos</h1>
         <hr />
         <div class="cardProduto">
 
-            <img src=@Html.DisplayFor(model => model.foto)
-                 alt="Avatar" style=" width:100%; height:250px;">
+            <img class="img-thumbnail" src=@Html.DisplayFor(modelproduto => modelproduto.foto)
+                 alt="Avatar" style=" width:400px; height:250px; display:block; margin:auto;">
 
-            <h4><b>@Html.DisplayFor(model => model.nome)</b></h4>
-            <p>@Html.DisplayFor(model => model.descricao)</p>
-            <p>@Html.DisplayFor(model => model.valor)</p>
+            <h4 style="margin:2px"> <b>Nome: </b> @Html.DisplayFor(modelproduto => modelproduto.nome)</h4>
+            <p style="margin:2px"> <b>Descrição: </b> R$ @Html.DisplayFor(modelproduto => modelproduto.valor)</p>
+            <p style="margin:2px"> <b>Valor: </b> R$ @Html.DisplayFor(modelproduto => modelproduto.valor)</p>
             <div class="buttonProduto">
                 <form asp-action="DetalharProduto">
                     <div class="form-group">
                         <input asp-for="idProduto" type="hidden" class="form-control" />
                         <span asp-validation-for="idProduto" class="text-danger"></span>
                     </div>
-                    <a asp-action="Index" class="btn btn-default">Lista</a>
+                    <a asp-action="Index" class="btn btn-default" style="margin:3px; background-color:aliceblue; color:darkblue "><b> Lista </b></a>
                 </form>
             </div>
         </div>

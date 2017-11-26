@@ -4,6 +4,7 @@
 
 <html>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width" />
     <title>Lista</title>
 
@@ -11,28 +12,28 @@
 
 </head>
 <body>
-<h1>Lista de Produtos</h1>
-<hr/>
-<p>
-    <a asp-action="CriarProduto">Criar produto</a>
-</p>
+    <h1>Lista de Produtos</h1>
+    <hr/>
+    <div class="buttonProduto" style="margin-left:45%;">
+        <a asp-action="CriarProduto" style=" background-color:lightblue; color:darkblue"  class="btn btn-default"><b>Criar produto</b></a>
+    </div>
+    <br />
 
-@foreach (var produto in Model) {
-    
+    @foreach (var produto in Model)
+    {
         <div class="cardProduto">
- 
-            <img src=@Html.DisplayFor(modelproduto => produto.foto) 
-                 alt="Avatar" style=" width:100%; height:250px;">
+            <img class="img-thumbnail" src=@Html.DisplayFor(modelproduto => produto.foto)
+                    alt="Avatar" style=" width:400px; height:250px; display:block; margin:auto;">
 
-            <h4><b>@Html.DisplayFor(modelproduto => produto.nome)</b></h4>
-            <p>@Html.DisplayFor(modelproduto => produto.valor)</p>
+            <h4 style="margin:2px"> <b>Nome:</b> @Html.DisplayFor(modelproduto => produto.nome)</h4>
+            <p style="margin:2px"> <b>Valor:</b> R$ @Html.DisplayFor(modelproduto => produto.valor)</p>
             <div class="buttonProduto">
-                <button>@Html.ActionLink("Editar", "EditarProduto", new { id = produto.idProduto })</button>
-                <button>@Html.ActionLink("Detalhes", "DetalharProduto", new {  id = produto.idProduto })</button>
-                <button>@Html.ActionLink("Deletar", "ExcluirProduto", new { id = produto.idProduto })</button>
-                <button>@Html.ActionLink("Comprar", "ComprarProduto", new { id = produto.idProduto })</button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Editar", "EditarProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Detalhes", "DetalharProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Deletar", "ExcluirProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Comprar", "ComprarProduto", new { id = produto.idProduto })</b> </button>
             </div>
         </div>
-}
+    }
 </body>
 </html>

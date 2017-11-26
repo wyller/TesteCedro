@@ -11,49 +11,44 @@
 </head>
 <body>
 
-<h4>Produto</h4>
-<hr/>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="CriarProduto" method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
+    <h1>Criar Produtos</h1>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="CriarProduto" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="nome" class="control-label"></label>
-                <input asp-for="nome" class="form-control" />
-                <span asp-validation-for="nome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="descricao" class="control-label"></label>
-                <input asp-for="descricao" class="form-control" />
-                <span asp-validation-for="descricao" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="valor" class="control-label"></label>
-                <input asp-for="valor" class="form-control" />
-                <span asp-validation-for="valor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="foto" class="control-label"></label>
-                <input asp-for="foto" class="form-control" />
-                <span asp-validation-for="foto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="image" class="control-label"></label>
-                <input type="file" id="files" class="form-control" asp-for="image"/>
-                <span asp-validation-for="foto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-default" />
-            </div>
+                <div class="form-group">
+                    <label asp-for="nome" class="control-label"></label>
+                    <input asp-for="nome" class="form-control" />
+                    <span asp-validation-for="nome" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="descricao" class="control-label"></label>
+                    <input asp-for="descricao" class="form-control" />
+                    <span asp-validation-for="descricao" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="valor" class="control-label"></label>
+                    <input asp-for="valor" class="form-control" />
+                    <span asp-validation-for="valor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="foto" class="control-label"></label>
+                    <input asp-for="foto" class="form-control" />
+                    <span asp-validation-for="foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="image" class="control-label"></label>
+                    <input type="file" id="files" class="form-control" asp-for="image"/>
+                    <span asp-validation-for="foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Criar" class="btn btn-default" />
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Lista</a>
-</div>
-
 </body>
 </html>

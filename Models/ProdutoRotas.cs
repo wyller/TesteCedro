@@ -141,10 +141,10 @@ namespace TesteCedro.Models
                     paramFoto.Value = produto.foto;
                     cmd.Parameters.Add(paramFoto);
 
-                    SqlParameter paramimage = new SqlParameter();
-                    paramimage.ParameterName = "@image";
-                    paramimage.Value = produto.image;
-                    cmd.Parameters.Add(paramimage);
+                    SqlParameter paramImage = new SqlParameter();
+                    paramImage.ParameterName = "@image";
+                    paramImage.Value = produto.image;
+                    cmd.Parameters.Add(paramImage);
 
                     con.Open();
                     cmd.ExecuteNonQuery();

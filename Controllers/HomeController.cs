@@ -58,7 +58,7 @@ namespace TesteCedro.Controllers
         public IActionResult EditarProduto(int id)
         {
             ProdutoRotas produtoRotas = new ProdutoRotas();
-            Produto produto = produtoRotas.GetProdutos().Single(x => x.idProduto == id);
+            Produto produto = produtoRotas.GetProdutos().Single(itemProduto => itemProduto.idProduto == id);
             return View(produto);
         }
 
@@ -79,7 +79,7 @@ namespace TesteCedro.Controllers
         public IActionResult ExcluirProduto(int id)
         {
             ProdutoRotas produtoRotas = new ProdutoRotas();
-            Produto produto = produtoRotas.GetProdutos().Single(x => x.idProduto == id);
+            Produto produto = produtoRotas.GetProdutos().Single(itemProduto => itemProduto.idProduto == id);
             return View(produto);
         }
 
@@ -95,7 +95,7 @@ namespace TesteCedro.Controllers
         public IActionResult DetalharProduto(int id)
         {
             ProdutoRotas produtoRotas = new ProdutoRotas();
-            Produto produto = produtoRotas.GetProdutos().Single(x => x.idProduto == id);
+            Produto produto = produtoRotas.GetProdutos().Single(itemProduto => itemProduto.idProduto == id);
             return View(produto);
         }
 
@@ -103,7 +103,7 @@ namespace TesteCedro.Controllers
         public IActionResult ComprarProduto(int id)
         {
             ProdutoRotas produtoRotas = new ProdutoRotas();
-            Produto produto = produtoRotas.GetProdutos().Single(x => x.idProduto == id);
+            Produto produto = produtoRotas.GetProdutos().Single(itemProduto => itemProduto.idProduto == id);
             return View(produto);
         }
 
