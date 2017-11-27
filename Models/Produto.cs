@@ -24,7 +24,7 @@ namespace TesteCedro.Models
         public float valor { get; set; }
 
         [Required(ErrorMessage = "A foto deve ser informada")]
-        [Display(Name = "Informe a foto do produto")]
+        [Display(Name = "Informe o link da foto do produto")]
         public string foto { get; set; }
 
         public byte[] image { get; set; }

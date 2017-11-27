@@ -13,21 +13,20 @@
         <h1>Excluir Produtos</h1>
         <hr />
         <div class="cardProduto">
+            <img class="img-thumbnail" src=@Html.DisplayFor(modelproduto => Model.foto)
+                 alt="Avatar" style=" width:400px; height:250px; display:block; margin:auto;">
 
-            <img src=@Html.DisplayFor(model => model.foto)
-                 alt="Avatar" style=" width:100%; height:250px;">
+            <h4 style="margin:2px"> <b>Nome:</b> @Html.DisplayFor(modelproduto => Model.nome)</h4>
+            <p style="margin:2px"> <b>Descrição:</b> @Html.DisplayFor(modelproduto => Model.valor)</p>
+            <p style="margin:2px"> <b>Valor:</b> R$ @Html.DisplayFor(modelproduto => Model.valor)</p>
 
-            <h4><b>@Html.DisplayFor(model => model.nome)</b></h4>
-            <p>@Html.DisplayFor(model => model.descricao)</p>
-            <p>@Html.DisplayFor(model => model.valor)</p>
             <div class="buttonProduto">
                 <form asp-action="ExcluirProduto">
                     <div class="form-group">
                         <input asp-for="idProduto" type="hidden" class="form-control" />
                         <span asp-validation-for="idProduto" class="text-danger"></span>
                     </div>
-                    <input type="submit" value="Delete" class="btn btn-default" />
-                    <a asp-action="Index" class="btn btn-default">Não</a>
+                    <input type="submit" value="Delete" style="background-color:aliceblue; color:darkblue; margin:3px; font-weight: bold;" class="btn btn-default" />
                 </form>
             </div>
         </div>

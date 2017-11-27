@@ -28,10 +28,10 @@
             <h4 style="margin:2px"> <b>Nome:</b> @Html.DisplayFor(modelproduto => produto.nome)</h4>
             <p style="margin:2px"> <b>Valor:</b> R$ @Html.DisplayFor(modelproduto => produto.valor)</p>
             <div class="buttonProduto">
-                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Editar", "EditarProduto", new { id = produto.idProduto })</b> </button>
-                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Detalhes", "DetalharProduto", new { id = produto.idProduto })</b> </button>
-                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Deletar", "ExcluirProduto", new { id = produto.idProduto })</b> </button>
-                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue"><b>@Html.ActionLink("Comprar", "ComprarProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue; margin:3px"><b>@Html.ActionLink("Editar", "EditarProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue; margin:3px"><b>@Html.ActionLink("Detalhes", "DetalharProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue; margin:3px"><b>@Html.ActionLink("Deletar", "ExcluirProduto", new { id = produto.idProduto })</b> </button>
+                <button class="btn btn-default" style="background-color:aliceblue; color:darkblue; margin:3px"><b>@Html.ActionLink("Comprar", "ComprarProduto", new { id = produto.idProduto })</b> </button>
             </div>
         </div>
     }

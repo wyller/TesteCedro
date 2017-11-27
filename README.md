@@ -1,4 +1,4 @@
-Cedro
+﻿Cedro
 =====================
 
 #### Esse é um projeto para uma entrevista de emprego na empresa Cedro
@@ -19,7 +19,6 @@ Cedro
 $ git clone <LINK DO REPOSITÓRIO>
 ```
 - Abra o projeto no Visual Studio 2017.  
-
 - Execute os comando no SQL Server:
 
 ```bash
@@ -32,26 +31,10 @@ CREATE TABLE produto(
 )
 ```
 ```bash
-CREATE TABLE usuario(
-	idUsuario  int IDENTITY(1,1) NOT NULL,
-	nome varchar(100) NOT NULL,
-	email varchar(150) NOT NULL,
-	admin bit NOT NULL,
-	senha varchar(50) NOT NULL
-)
-```
-
-```bash
 CREATE
-PROCEDURE EditarProduto
+PROCEDURE EditarProduto (@idProduto integer, @nome varchar(75), @descricao varchar(150), @valor float, @foto varchar(200))
 AS
 BEGIN
-	declare @idProduto integer
-	declare @nome varchar(75)
-	declare @descricao varchar(150)
-	declare @valor float
-	declare @foto varchar(200)
-
 	update produto 
 	set nome = @nome,
 	descricao = @descricao,
@@ -60,47 +43,22 @@ BEGIN
 	where idProduto = @idProduto
 END
 ```
-
 ```bash
 CREATE
-PROCEDURE ExcluirProduto
+PROCEDURE ExcluirProduto(@idProduto integer)
 AS
 BEGIN
-	declare @idProduto integer
-
 	delete from produto where idProduto = @idProduto
 END
 ```
-
 ```bash
 CREATE
-PROCEDURE InserirProduto]
+PROCEDURE InserirProduto(@idProduto integer, @nome varchar(75), @descricao varchar(150), @valor float, @foto varchar(200))
 AS
 BEGIN
-	declare @nome varchar(75)
-	declare @descricao varchar(150)
-	declare @valor float
-	declare @foto varchar(200)
-
 	insert into produto(nome, descricao, valor, foto) values(@nome, @descricao, @valor, @foto)
 END
 ```
-
-```bash
-CREATE
-PROCEDURE InserirUsuario
-AS
-BEGIN
-	declare @email varchar(150)
-	declare @nome varchar(100)
-	declare @senha varchar(50)
-	declare @admin bit
-
-	insert into usuario(nome, email, senha, admin)
-	values(@nome, @email, @senha, @admin)
-END
-```
-
 ```bash
 CREATE
 PROCEDURE SelectProdutos
@@ -109,31 +67,96 @@ BEGIN
 	SELECT * from produto
 END
 ```
-
 ```bash
 CREATE
-PROCEDURE [dbo].[SelectUmProduto]
+PROCEDURE SelectUmProduto(@idProduto integer)
 AS
 BEGIN
-	declare @idProduto integer
 	SELECT * from produto where idProduto = @idProduto
 END
 ```
-
+## Conexão com o Banco de Dados
+- Troque em appsettings.json no projeto para o servidor local da sua maquina
 ```bash
-CREATE
-PROCEDURE [dbo].[SelectUmUsuario]
-AS
-BEGIN
-	declare @idUsuario integer
-	SELECT * from usuario where idUsuario = @idUsuario
-END
+"DefautConnection": "Data Source={NOME_DO_SERVIDOR_SQL};Initial Catalog=testeCedro;Integrated Security=True;"
 ```
+
 ## Como funciona a Rota(comportamento do codigo)
 
 - Por se tratar uma arquitetura MVC, o View é onde ocorre as entradas e saidas, que passam pelo Controller que faz a tranzação e as regras de negocios solicitadas e o Model que é o mapeamento do Banco de Dados do SQL Server.
 
+## Exemplo
+- Model(Mapeamento)
+```bash
+namespace TesteCedro.Models
+{
+    public class Produto
+    {
+        public int idProduto { get; set; }
 
+        [Required(ErrorMessage = "O nome deve ser informado")]
+        [Display(Name = "Informe o nome do Produto")]
+        public string nome { get; set; }
 
+        [Required(ErrorMessage = "A descrição deve ser informada")]
+        [Display(Name = "Informe a descrição do produto")]
+        public string descricao { get; set; }
+
+        [Required(ErrorMessage = "O valor deve ser informado")]
+        [Display(Name = "Informe o valor do produto")]
+        public float valor { get; set; }
+
+        [Required(ErrorMessage = "A foto deve ser informada")]
+        [Display(Name = "Informe o link da foto do produto")]
+        public string foto { get; set; }
+
+    }
+}
+```
+- Model
+```bash
+public List<Produto> GetProdutos()
+{
+var configuration = ConfigurationHalper.GetConfiguration(Directory.GetCurrentDirectory());
+var conexaoString = configuration.GetConnectionString("DefautConnection");
+
+List<Produto> produtos = new List<Produto>();
+	try
+	{
+		using (SqlConnection con = new SqlConnection(conexaoString))
+		{
+		    SqlCommand cmd = new SqlCommand("SelectProdutos", con);
+		    cmd.CommandType = CommandType.StoredProcedure;
+		    con.Open();
+		    SqlDataReader rdr = cmd.ExecuteReader();
+		    while (rdr.Read())
+		    {
+			Produto produto = new Produto();
+			produto.idProduto = Convert.ToInt32(rdr["idProduto"]);
+			produto.nome = rdr["nome"].ToString();
+			produto.descricao = rdr["descricao"].ToString();
+			produto.valor = Convert.ToInt32(rdr["valor"]);
+			produto.foto = rdr["foto"].ToString();
+
+			produtos.Add(produto);
+		    }
+		}
+		return produtos;
+	}
+	catch
+	{
+		throw;
+	}
+}
+```
+- Controler
+```bash
+public IActionResult Index()
+{
+    ProdutoRotas produtosRotas = new ProdutoRotas();
+    List<Produto> ListaProdutos = produtosRotas.GetProdutos().ToList();
+    return View("Lista", ListaProdutos);
+}
+```
 Vida longa e prospera !
 =====================

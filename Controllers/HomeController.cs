@@ -27,7 +27,7 @@ namespace TesteCedro.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarProduto(Produto produto, List<IFormFile> image)
+        public IActionResult CriarProduto(Produto produto)
         {
 
             if (!ModelState.IsValid)
@@ -36,18 +36,6 @@ namespace TesteCedro.Controllers
             }
             else
             {
-                foreach (var img in image)
-                {
-                    if (img.Length > 0)
-                    {
-                        using (var stream = new MemoryStream())
-                        {
-                            await img.CopyToAsync(stream);
-                            produto.image = stream.ToArray();
-                        }
-                    }
-                }
-                
                 ProdutoRotas produtosRotas = new ProdutoRotas();
                 produtosRotas.IncluirProduto(produto);
                 return RedirectToAction("Index");

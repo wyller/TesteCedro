@@ -21,7 +21,7 @@
                  alt="Avatar" style=" width:400px; height:250px; display:block; margin:auto;">
 
             <h4 style="margin:2px"> <b>Nome: </b> @Html.DisplayFor(modelproduto => modelproduto.nome)</h4>
-            <p style="margin:2px"> <b>Descrição: </b> R$ @Html.DisplayFor(modelproduto => modelproduto.valor)</p>
+            <p style="margin:2px"> <b>Descrição: </b> @Html.DisplayFor(modelproduto => modelproduto.descricao)</p>
             <p style="margin:2px"> <b>Valor: </b> R$ @Html.DisplayFor(modelproduto => modelproduto.valor)</p>
             <div class="buttonProduto">
                 <form asp-action="DetalharProduto">
