@@ -86,7 +86,7 @@ END
 - Por se tratar uma arquitetura MVC, o View é onde ocorre as entradas e saidas, que passam pelo Controller que faz a tranzação e as regras de negocios solicitadas e o Model que é o mapeamento do Banco de Dados do SQL Server.
 
 - Exemplo
--- Model(Mapeamento)
+- Model(Mapeamento)
 ```bash
 namespace TesteCedro.Models
 {
@@ -113,7 +113,7 @@ namespace TesteCedro.Models
     }
 }
 ```
--- Model
+- Model
 ```bash
 public List<Produto> GetProdutos()
 {
@@ -149,7 +149,7 @@ List<Produto> produtos = new List<Produto>();
 	}
 }
 ```
--- Controler
+- Controler
 ```bash
 public IActionResult Index()
 {
